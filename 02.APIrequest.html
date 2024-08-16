@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=0, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: #212121;">
+    0 UNSENT clint has been created. open() not called yet.
+    1 OPENED open () has been called.
+    2 HEADERS_RECEIVED send() has been called, and headers and status are available.
+    3 LOADING downloading; responceText holdes partial data.
+    4 DONE the operation is complete 
+    <!-- // this are taken from the documentation // -->
+</body>
+<script>
+    const requestUrl = 'https://www.youtube.com/watch?v=_TjtAyMkiTI&t=17833s&ab_channel=ChaiaurCode'
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET',requestUrl)
+    xhr.onreadystatechange = fuction(){
+        console.log(xhr.readyState); 
+        if (xhr.readyState === 4){
+            const data = JSON.parse(this.responceText)
+            console.log(typeof data);
+            console.log(data.followers);        
+        }
+    }
+    xhr.send()
+</script>
+</html>
